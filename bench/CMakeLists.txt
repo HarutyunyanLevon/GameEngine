@@ -3,6 +3,8 @@ include(FetchContent)
 set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "" FORCE)
 set(BENCHMARK_ENABLE_GTEST_TESTS OFF CACHE BOOL "" FORCE)
 set(BENCHMARK_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
+# A newer compiler than the one Benchmark was tested with can add warnings; do not fail on them.
+set(BENCHMARK_ENABLE_WERROR OFF CACHE BOOL "" FORCE)
 
 FetchContent_Declare(
   benchmark

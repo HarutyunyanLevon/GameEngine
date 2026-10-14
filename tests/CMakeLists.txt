@@ -1,5 +1,9 @@
 include(FetchContent)
 
+# doctest 2.4.11 declares a CMake minimum below 3.5, which CMake 4+ refuses to configure.
+# Raising the minimum for this dependency also silences the <3.10 deprecation warning.
+set(CMAKE_POLICY_VERSION_MINIMUM 3.10)
+
 FetchContent_Declare(
   doctest
   GIT_REPOSITORY https://github.com/doctest/doctest.git

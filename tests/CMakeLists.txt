@@ -12,7 +12,7 @@ FetchContent_Declare(
   SYSTEM
 )
 FetchContent_MakeAvailable(doctest)
-
+include(${doctest_SOURCE_DIR}/scripts/cmake/doctest.cmake)
 # Every test_*.cpp in this folder is picked up automatically (re-run cmake is not needed).
 # Add a file per exercise, e.g. test_buffer.cpp on Day 1, test_pool_allocator.cpp on Day 6.
 file(GLOB ENGINE_TEST_SOURCES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/test_*.cpp)
@@ -20,4 +20,4 @@ file(GLOB ENGINE_TEST_SOURCES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/test
 add_executable(engine_tests ${ENGINE_TEST_SOURCES})
 target_link_libraries(engine_tests PRIVATE engine::engine doctest::doctest)
 
-add_test(NAME engine_tests COMMAND engine_tests)
+doctest_discover_tests(engine_tests)
